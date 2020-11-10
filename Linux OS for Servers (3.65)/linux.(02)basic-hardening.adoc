@@ -46,12 +46,12 @@ The output of the following commands must be checked for unwanted services:
 
 TCP (IPv4 & v6):
 ----
-   # ss -nlt 2>/dev/null | awk '(#1 == "LISTEN" && #4 !~ /127.0.0.*.:./ && #4 !~ /::*.:./) {print #4}' | sed 's/.*://' | sort -nu
+   # ss -nlt 2>/dev/null | awk '$1 == "LISTEN" && $4 !~ /127.0.0.*.:./ && $4 !~ /::*.:./{print $4}' | sed 's/.*://' | sort -nu
 ----
 
 UDP (IPv4 & v6):
 ----
-   # ss -nlu 2>/dev/null | awk '(#1 == "UNCONN" && #4 !~ /127.0.0.*.:./ && #4 !~ /::*.:./) {print #4}' | sed 's/.*://' | sort -nu
+   # ss -nlu 2>/dev/null | awk '$1 == "UNCONN" && $4 !~ /127.0.0.*.:./ && $4 !~ /::*.:./ {print $4}' | sed 's/.*://' | sort -nu
 ----
 
 Compare the results with your communication matrix to identify open and not
