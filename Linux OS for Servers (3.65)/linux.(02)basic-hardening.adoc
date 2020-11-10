@@ -1045,7 +1045,7 @@ Furthermore, it makes it possible to log activities and actions on a system and 
 Use the following command to search for not needed and prohibited user accounts on
 the system:
 ----
-   # awk -F':' '{ if ( $3 >= 1000 && $7 != "/usr/sbin/nologin" ) print $1 }' /etc/passwd
+   #  awk -F':' '{ if ( $3 >= 1000 && $7 != "/usr/sbin/nologin" && $7 != "/bin/false" ) print $1 }' /etc/passwd
 ----
 
 *Compliance Check* (RedHat, Suse)
@@ -1053,7 +1053,7 @@ the system:
 Use the following command to search for not needed and prohibited user accounts on
 the system:
 ----
-   # awk -F':' '{ if ( $3 >= 1000 && $7 != "/sbin/nologin" ) print $1 }' /etc/passwd
+   #  awk -F':' '{ if ( $3 >= 1000 && $7 != "/sbin/nologin" && $7 != "/bin/false" ) print $1 }' /etc/passwd
 ----
 
 *Implementation* (all)
